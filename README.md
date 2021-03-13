@@ -37,10 +37,6 @@
 
 ## order テーブル
 
-| card number     | text   | null: false |
-| expiration date | text   | null: false |
-| security code   | text   | null: false |
-
 ### Association
 
 ## shipping address テーブル

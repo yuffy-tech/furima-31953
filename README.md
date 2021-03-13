@@ -2,41 +2,45 @@
 
 ## users テーブル
 
-| Column     | Type   | Options     |
-| --------   | ------ | ----------- |
-| nickname   | string | null: false |
-| email      | string | null: false |
-| password   | string | null: false |
-| name       | text   | null: false |
-| name       | text   | null: false |
-| birthday   | text   | null: false |
+| Column              | Type   | Options     |
+| --------            | ------ | ----------- |
+| nickname            | string | null: false |
+| email               | string | null: false |
+| encrypted_password  | string | null: false |
+| na                  | text   | null: false |
+| name                | text   | null: false |
+| na furigana         | text   | null: false |
+| name furigana       | text   | null: false |
+| birthday            | date   | null: false |
 ### Association
-
+<!-- ユーザーから見て他のテーブルがどうか -->
+- has_many :items
+- has_many :products
 
 ## itemes テーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| name           | string | null: false |
-| pictcher       | string | null: false |
-| description    | text   | null: false |
-| details        | text   | null: false |
-| delivery       | text   | null: false |
-| price          | text   | null: false |
+| name           | string    | null: false |
+| pictcher       | string    | null: false |
+| description    | text      | null: false |
+| details_id     | text      | null: false |
+| delivery_id    | text      | null: false |
+| price          | integer   | null: false |
 ### Association
 
-## details テーブル
-
-| name          | text   | null: false |
-| category      | text   | null: false |
-| satus         | text   | null: false |
-| delivery fee  | text   | null: false |
-| city          | text   | null: false |
-| date and time | text   | null: false |
 ### Association
 
-## order テーブル
+## product テーブル
 
+| Column | Type         | Options     |
+| ------ | ------       | ----------- |
+| users                 | string    | null: false |
+| status_id             | string    | null: false |
+| jotai_id   | text     | null: false |
+| deribery fee_id       | text      | null: false |
+| start area_id         | text      | null: false |
+| shipping guideline_id | integer   | null: false |
 ### Association
 
 ## shipping address テーブル

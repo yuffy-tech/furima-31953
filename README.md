@@ -8,10 +8,14 @@
 | email               | string | null: false |
 | encrypted_password  | string | null: false |
 | na                  | text   | null: false |
-| name                | text   | null: false |
-| na furigana         | text   | null: false |
-| name furigana       | text   | null: false |
+| first_name          | text   | null: false |
+| last_name           | text   | null: false |
+| first_name_kana     | text   | null: false |
+| last_name_kana      | text   | null: false |
 | birthday            | date   | null: false |
+
+
+
 ### Association
 <!-- ユーザーから見て他のテーブルがどうか -->
 - has_many :items
@@ -37,17 +41,17 @@
 | ------ | ------       | ----------- |
 | users                 | string    | null: false |
 | status_id             | string    | null: false |
-| jotai_id   | text     | null: false |
-| deribery fee_id       | text      | null: false |
-| start area_id         | text      | null: false |
-| shipping guideline_id | integer   | null: false |
+| jotai_id              | text     | null: false |
+| deribery_fee_id       | text      | null: false |
+| start_area_id         | text      | null: false |
+| shipping_guideline_id | integer   | null: false |
 ### Association
 
 ## shipping address テーブル
 
-| postal code   | text   | null: false |
+| postal_code   | text   | null: false |
 | prefectures   | text   | null: false |
 | municipality  | text   | null: false |
 | address       | text   | null: false |
-| phone nunber  | text   | null: false |
-| security code | text   | null: false |
+| phone_nunber  | text   | null: false |
+| security_code | text   | null: false |

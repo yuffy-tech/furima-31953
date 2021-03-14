@@ -7,10 +7,10 @@
 | nickname            | string | null: false |
 | email               | string | null: false |
 | encrypted_password  | string | null: false |
-| first_name          | text   | null: false |
-| last_name           | text   | null: false |
-| first_name_kana     | text   | null: false |
-| last_name_kana      | text   | null: false |
+| first_name          | string | null: false |
+| last_name           | string | null: false |
+| first_name_kana     | string | null: false |
+| last_name_kana      | string | null: false |
 | birthday            | date   | null: false |
 
 
@@ -30,18 +30,10 @@
 | details_id     | text      | null: false |
 | delivery_id    | text      | null: false |
 | price          | integer   | null: false |
-### Association
-
-## purchase_history テーブル
-
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
 | users_id        | string    | null: false |
 | itemes_id       | string    | null: false |
 ### Association
 - has_many :items
-- has_many :products
-
 
 ## product テーブル
 
@@ -49,7 +41,6 @@
 | ------ | ------       | ----------- |
 | users                 | string    | null: false |
 | status_id             | string    | null: false |
-| jotai_id              | text      | null: false |
 | deribery_fee_id       | text      | null: false |
 | start_area_id         | text      | null: false |
 | shipping_guideline_id | integer   | null: false |
@@ -57,8 +48,10 @@
 
 ## shipping address テーブル
 
-| postal_code   | text   | null: false |
-| prefectures   | text   | null: false |
-| municipality  | text   | null: false |
-| address       | text   | null: false |
-| building_name | text   | null: false |
+| Column        | Type         | Options     |
+| ------        | ------       | ----------- |
+| postal_code   | string       | null: false |
+| prefectures   | inteder      | null: false |
+| municipality  | string       | null: false |
+| address       | string       | null: false |
+| building_name | string       | null: false |

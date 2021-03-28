@@ -114,19 +114,19 @@ RSpec.describe User, type: :model do
     end
 # 19・英語のみでは登録できないこと
     it 'passwordが英語以外で返ること' do
-      @user.password = "123456"
+      @user.password = "gakuen"
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
 # 20・数字のみでは登録できないこと
     it 'passwordが数字以外で返ること' do
-      @user.password = "gakuen"
+      @user.password = "123456"
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
 # 21・全角では登録できないこと
 it 'passwordが全角以外で返ること' do
-     @user.password = "gakuen"
+     @user.password = "AAAAA１"
      @user.valid?
      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end

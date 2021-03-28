@@ -5,7 +5,6 @@ RSpec.describe User, type: :model do
   end
  
 
- describe User do
   describe '#create' do
 # 1. nicknameとemail、passwordとpassword_confirmationなどが存在すれば登録できること
     it "is valid with a nickname, email, password, password_confirmation" do
@@ -73,20 +72,14 @@ RSpec.describe User, type: :model do
       another_user.valid?
       expect(another_user.errors.full_messages).to include("Email has already been taken")
     end
-# 12. passwordが7文字以上であれば登録できること
-    it "is valid with a password that has more than 6 characters " do
-      @user.password = "gakuen11"
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
-    end
-# 13. passwordが6文字以下であれば登録できないこと
+# 12. passwordが6文字以下であれば登録できないこと
     it "is invalid with a password that has less than 6 characters " do
       @user.password = "gaku1"
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
   end
-# 14. last_name_kanaがカタカナでないと登録できないこと
+# 13. last_name_kanaがカタカナでないと登録できないこと
   describe 'katakana' do
     it 'last_name_kanaがカタカナで返ること' do
       @user.last_name_kana = "yasuhiro"
@@ -99,6 +92,43 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("First name kana is invalid")
     end
+# 16. emailは＠を含んでいなければ登録できないこと
+    it 'emailが@を含むこと' do
+     @user.email = "gakuenyahoo.co.jp"
+     @user.valid?
+     expect(@user.errors.full_messages).to include("Email is invalid")
+  
+    end
+# 17・ユーザー本名（苗字）は漢字・平仮名・カタカナ以外では登録できないこと
+    it 'first_name_kanaがユーザー本名（苗字）は漢字・平仮名・カタカナ以外で返ること' do
+      @user.first_name_kana = "shimai"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana is invalid")
+
+    end
+# 18・ユーザー本名（名前）は漢字・平仮名・カタカナ以外では登録できないこと
+    it 'last_name_kanaがユーザー本名（苗字）は漢字・平仮名・カタカナ以外で返ること' do
+      @user.last_name_kana = "shimai"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name kana is invalid")
+    end
+# 19・英語のみでは登録できないこと
+    it 'passwordが英語以外で返ること' do
+      @user.password = "123456"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+    end
+# 20・数字のみでは登録できないこと
+    it 'passwordが数字以外で返ること' do
+      @user.password = "gakuen"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+    end
+# 21・全角では登録できないこと
+it 'passwordが全角以外で返ること' do
+     @user.password = "gakuen"
+     @user.valid?
+     expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+    end
   end
-end
 end

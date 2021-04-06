@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2021_03_30_203449) do
     t.integer "delivery_burden_id", null: false
     t.integer "start_area_id", null: false
     t.integer "delivery_day_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

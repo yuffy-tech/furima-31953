@@ -94,7 +94,7 @@ RSpec.describe Item, type: :model do
            end
 # 16. 販売価格は半角英数混合では保存可能できない
            it '販売価格は半角英数混合では保存可能できない' do
-            @item.price = "１１11"
+            @item.price = "abc123"
             @item.valid?
             expect(@item.errors.full_messages).to include("Price is not a number")
            end

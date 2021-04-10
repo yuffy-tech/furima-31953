@@ -12,6 +12,9 @@ class Item < ApplicationRecord
   
   #価格の範囲が、¥300~¥9,999,999の間であること,販売価格は半角数字のみ保存可能であること
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+ 
+  #販売価格は半角数字のみ保存可能であること
+  validates :price, format:{with: /\A[0-9]+\z/}
 
 
   #ジャンルの選択が「--」の時は保存できないようにする

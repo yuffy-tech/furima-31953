@@ -10,17 +10,6 @@ RSpec.describe Item, type: :model do
     context '商品出品がうまくいくとき' do
 # 1. :name, :image, :text, :category_id, :status_id, :delivery_burden_id, :start_area_id, :delivery_day_id, :priceが存在すれば登録できること
           it "is valid with a name, image, text, category_id, status_id, delivery_burden_id, start_area_id, delivery_day_id, price" do
-            # @item.name                = '任天堂スイッチ'
-            # @item.image               = {after(:build) do |item|
-            #   item.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
-            #  end}
-            # @item.text                = '未使用で、誰も使わなかった'
-            # @item.category_id         =  {1}
-            # @item.status_id           =  {1}
-            # @item.delivery_burden_id  =  {1}
-            # @item.start_area_id       =  {1}
-            # @item.delivery_day_id     =  {1}
-            # @item.price               =  {"5000"}
             expect(@item).to be_valid
           end
     end
@@ -78,6 +67,12 @@ RSpec.describe Item, type: :model do
             @item.text = '' 
             @item.valid?
             expect(@item.errors.full_messages).to include("Text can't be blank")
+          end
+# 12. 価格の範囲が、半角数字で¥300~¥9999999の間でなければならない          
+          it "is invalid without a price" do
+            @item.price = 200 
+            @item.valid?
+            expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
           end
       end
     end

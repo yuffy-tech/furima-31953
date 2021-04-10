@@ -2,7 +2,6 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
-    # @item.image = fixture_file_upload('public/image/test_image.png')
   end
  
 
@@ -74,6 +73,18 @@ RSpec.describe Item, type: :model do
             @item.valid?
             expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
           end
+# 13. 価格の範囲が、半角数字で299以下は保存できない
+           it "is invalid without a price" do
+            @item.price = 200 
+            @item.valid?
+            expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+           end
+# 14. 価格の範囲が、半角数字で10000000以上は保存できない
+           it "is invalid without a price" do
+            @item.price = 11111111 
+            @item.valid?
+            expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        end
       end
     end
 end

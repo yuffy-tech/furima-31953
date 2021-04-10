@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
 
     def create
       #formのデータを受け取る
-      @item =Item.create(item_params)
+      @item =Item.new(item_params)
       if @item.save
         redirect_to items_path
       else

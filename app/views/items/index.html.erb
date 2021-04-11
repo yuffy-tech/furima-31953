@@ -126,8 +126,8 @@
     <%= link_to '新規投稿商品', "new_item_path", class: "subtitle" %>
     <ul class='item-lists'>
 
-     <%# if @items.present? %>  <%# 一覧表示機能   185行目のendも  %>
-      <%# @items.each do |item|%>  <%# 一覧表示機能   156行目のendも  %>
+     <%# if @items.present? %>  <%# 185行目のend  %>
+      <% @items.each do |item|%>  <%# 一覧表示機能   156行目のend  %>
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
         <%#= link_to item_path(item.id), method: :get do%>  <%# 一覧表示機能 %>
@@ -153,8 +153,9 @@
             </div>
           </div>
         </div>
-        <%# end %>  <%# 一覧表示機能 %>
       </li>
+      <% end %>  <%# 一覧表示機能 %>
+
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>

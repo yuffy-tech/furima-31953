@@ -1,0 +1,16 @@
+<h1>記事一覧</h1>
+<%= link_to "出品する", new_items_path, class:"post" %>
+
+<% @itemss.each do |items| %>
+  <div class="items">
+    <div class="items-genre">
+      <%= items.genre.name %>
+    </div>
+    <div class="items-title">
+      <%= items.title %>
+    </div>
+    <div class="items-text">
+      <%= items.text %>
+    </div>
+  </div>
+<% end %>

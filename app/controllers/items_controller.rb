@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
 
     def update
       if @item.update(item_params)
-        redirect_to item_path
+        redirect_to item_path(@item)
       else
         render :edit
       end
@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
 
     def contributor_confirmation
       if @item.user.id != current_user.id 
-        redirect_to item_path
+        redirect_to @user
       end 
     end
 

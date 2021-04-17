@@ -43,9 +43,10 @@ class ItemsController < ApplicationController
 
     def contributor_confirmation
       if @item.user.id != current_user.id 
-        redirect_to @user
+        redirect_to root_path(@item)
       end 
     end
+    
 
     def set_item
       @item = Item.find(params[:id])

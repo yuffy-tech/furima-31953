@@ -7,5 +7,6 @@ class ItemForm
 
     def save
       # 各テーブルにデータを保存する処理を書く
+      attr_accessor :price
     end
   end

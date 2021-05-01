@@ -1,8 +1,12 @@
 class ItemForm
     include ActiveModel::Model
-    attr_accessor :user_id, :item_id, :postal_code, :start_area_id, :municipality, :address, :building_name, :phone_number, :management
+    attr_accessor :token, :user_id, :item_id, :postal_code, :start_area_id, :municipality, :address, :building_name, :phone_number, :management
 
     with_options presence: true do
+
+    validates :token
+    validates :price
+
     validates :user_id
     validates :item_id
     validates :postal_code , format: { with: /\A[0-9]{3}[-][0-9]{4}\z/ }
@@ -12,7 +16,7 @@ class ItemForm
     end
 
     #ジャンルの選択が「--」の時は保存できないようにする
-   with_options numericality:{ other_than: 1 } do
+    with_options numericality:{ other_than: 1 } do
     validates :start_area_id
     end
 

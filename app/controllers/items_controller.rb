@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
     end
 
     def contributor_confirmation
-      if @item.user.id != current_user.id 
+      if @item.user.id != current_user.id
         redirect_to root_path(@item)
       end 
     end

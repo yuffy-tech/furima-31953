@@ -5,7 +5,6 @@ class ItemForm
     with_options presence: true do
 
     validates :token
-    validates :price
 
     validates :user_id
     validates :item_id

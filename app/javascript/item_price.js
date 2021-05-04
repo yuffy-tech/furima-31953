@@ -1,5 +1,6 @@
 window.addEventListener('load', () => {
     const torihiki = document.getElementById("item-price");
+    console.log(torihiki)
     torihiki.addEventListener("input", () => {
       const inputValue = torihiki.value;
       const addTaxDom = document.getElementById("add-tax-price")

@@ -1,8 +1,13 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item
+  
 
     def index
+      return redirect_to root_path if current_user.id == @item.user_id
       @order = ItemForm.new
+     
+
     end
 
     def create
@@ -24,6 +29,7 @@ class OrdersController < ApplicationController
       @item = Item.find(params[:item_id])
     end
 
+    
     def order_params
       params.require(:item_form).permit(:postal_code, :start_area_id, :municipality, :address, :building_name, :phone_number, :management).merge(token: params[:token],user_id: current_user.id, item_id: params[:item_id].to_i)
     end

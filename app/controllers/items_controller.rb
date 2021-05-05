@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
     end
 
     def contributor_confirmation
-      if @item.user.id != current_user.id #もしくは商品が売れていたら if items.present?
+      if @item.user.id != current_user.id||@item.management.present?
         redirect_to root_path(@item)
       end 
     end

@@ -1,6 +1,6 @@
 class ItemForm
     include ActiveModel::Model
-    attr_accessor :token, :user_id, :item_id, :postal_code, :start_area_id, :municipality, :address, :building_name, :phone_number, :management
+    attr_accessor :token, :user_id, :item_id, :postal_code, :start_area_id, :municipality, :address, :building_name, :phone_number
 
     with_options presence: true do
 
@@ -9,7 +9,7 @@ class ItemForm
     validates :user_id
     validates :item_id
     validates :postal_code , format: { with: /\A[0-9]{3}[-][0-9]{4}\z/ }
-    validates :municipality, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
+    validates :municipality, format: { with: /\A[ぁ-んァ-ン一-龥々]\z/, message: "is invalid. Input full-width characters."}
     validates :address
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "is invalid."}
     end

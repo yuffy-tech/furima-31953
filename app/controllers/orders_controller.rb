@@ -4,13 +4,13 @@ class OrdersController < ApplicationController
   
 
     def index
-      return redirect_to root_path if current_user.id == @item.user_id
       @order = ItemForm.new
      
 
     end
 
     def create
+
         # formのデータを受け取る
         @order =ItemForm.new(order_params)
         
@@ -27,6 +27,10 @@ class OrdersController < ApplicationController
 
     def set_item
       @item = Item.find(params[:item_id])
+    end
+
+    def contributor_confirmation
+      return redirect_to root_path if current_user.id == @item.user_id
     end
 
     

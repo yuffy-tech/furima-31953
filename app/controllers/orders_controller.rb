@@ -6,6 +6,9 @@ class OrdersController < ApplicationController
 
     def index
       @order = ItemForm.new
+       if current_user == @item.user
+         redirect_to root_path
+       end
     end
 
     def create
